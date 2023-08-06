@@ -1,0 +1,16 @@
+{
+  "name": "bun-s3-uploader",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "dependencies": {
+    "@elysiajs/html": "^0.5.2",
+    "elysia": "^0.5.25",
+    "nanoid": "^4.0.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
