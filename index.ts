@@ -1,34 +1,15 @@
 import { Elysia, t } from 'elysia';
-import * as nanoid from 'nanoid';
 import { html } from '@elysiajs/html';
-import { readdir, readdirSync, statSync } from 'fs';
+import { readdirSync } from 'fs';
+import * as nanoid from 'nanoid';
 
 const PORT = process.env.PORT || 3000;
 
-const baseDir = '/Users/ismiabbas/projects/app-idea/bun-s3-uploader/uploads/';
-
-const uploadPage = `
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Document</title>
-    </head>
-    <body>
-      <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="files" multiple />
-        <input type="submit" value="Upload" />
-      </form>
-    </body>
-  </html>
-`;
-
-const fileType = ['image', 'audio', 'video', 'text', 'application'];
+const baseDir = './uploads/';
 
 new Elysia()
   .use(html())
-  .get('/', () => uploadPage)
+  .get('/', () => new Response(Bun.file('index.html')))
   .get('/image/list', async () => {
     const directoryPath = './uploads';
     const files = readdirSync(directoryPath);
@@ -46,15 +27,22 @@ new Elysia()
   .post(
     '/upload',
     async ({ body: { file } }) => {
-      await Bun.write(baseDir + 'index.jpg', file);
+      const fileName = nanoid.nanoid() + '.' + file.type.split('/')[1];
+      await Bun.write(baseDir + fileName, file);
 
-      return {
-        message: 'File uploaded',
-      };
+      return new Response(
+        JSON.stringify({
+          name: fileName,
+          type: file.type,
+          size: file.size,
+        }),
+      );
     },
     {
       body: t.Object({
-        file: t.File(),
+        file: t.File({
+          type: ['image/jpeg', 'image/png'],
+        }),
       }),
     },
   )
