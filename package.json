@@ -1,23 +1,23 @@
 {
-  "name": "bun-s3-uploader",
-  "module": "index.ts",
-  "type": "module",
-  "devDependencies": {
-    "bun-types": "latest"
-  },
-  "scripts": {
-    "dev": "Bun dev --watch",
-    "start": "Bun start",
-    "build": "tsc",
-    "test": "jest"
-  },
-  "dependencies": {
-    "@elysiajs/html": "^0.5.2",
-    "elysia": "^0.5.25",
-    "nanoid": "^4.0.2",
-    "react": "^18.2.0"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  }
+	"name": "bun-s3-uploader",
+	"module": "index.ts",
+	"type": "module",
+	"devDependencies": {
+		"bun-types": "latest"
+	},
+	"scripts": {
+		"dev": "Bun dev --watch",
+		"start": "Bun start",
+		"build": "tsc",
+		"test": "jest"
+	},
+	"dependencies": {
+		"@elysiajs/html": "^0.5.2",
+		"elysia": "^0.5.25",
+		"nanoid": "^4.0.2",
+		"react": "^18.2.0"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	}
 }
