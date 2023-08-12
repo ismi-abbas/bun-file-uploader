@@ -26,6 +26,7 @@ app.get('/image/list', async () => {
 		files: files,
 	};
 });
+
 app.post(
 	'/upload',
 	async ({ body: { file } }) => {
@@ -55,6 +56,7 @@ app.post(
 		}),
 	},
 );
+
 app.post(
 	'/multiple',
 	({ body: { files } }) => {
@@ -89,12 +91,14 @@ app.post(
 		}),
 	},
 );
+
 app.onError(({ code, error }) => {
 	return {
 		code,
 		error,
 	};
 });
+
 app.listen(PORT);
 
 console.log(`Server is running on http://localhost:${PORT}`);
