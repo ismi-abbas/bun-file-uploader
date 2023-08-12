@@ -25,6 +25,6 @@ COPY public public
 COPY tsconfig.json .
 
 ENV ENV production
-CMD ["./bun", "src/index.ts"]
+CMD ["./bun", "src/index.tsx"]
 
 EXPOSE 3000

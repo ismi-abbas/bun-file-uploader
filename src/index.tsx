@@ -6,7 +6,7 @@ import * as nanoid from 'nanoid';
 import Index from './components/Index';
 import * as elements from 'typed-html';
 
-const PORT = process.env.PORT || 6758;
+const PORT = process.env.PORT || 8080;
 
 const baseDir = './uploads/';
 
