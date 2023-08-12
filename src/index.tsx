@@ -1,4 +1,5 @@
 import { Elysia, t } from 'elysia';
+import { staticPlugin } from '@elysiajs/static';
 import { html } from '@elysiajs/html';
 import { readdirSync, mkdir, exists, existsSync } from 'fs';
 import * as nanoid from 'nanoid';
@@ -11,7 +12,10 @@ const baseDir = './uploads/';
 
 const app = new Elysia();
 
+app.use(staticPlugin());
+
 app.use(html()).get('/', ({ html }) => html(<Index image="" />));
+
 app.get('/image/list', async () => {
 	const directoryPath = './uploads';
 	const files = readdirSync(directoryPath);

@@ -15,7 +15,7 @@ export default function Index({ image }: { image: string }) {
 					<div class="flex flex-col items-center justify-center mb-6">
 						<div class="flex gap-3">
 							<h1 class="text-3xl font-bold">Bun Uploader</h1>
-							<img src="../assets/bun.png" alt="bun-image" height="40px" width="40px" />
+							<img src="/public/bun.png" alt="bun-image" height="40px" width="40px" />
 						</div>
 						<p class="text-gray-600 mt-2">This app is using bun api to serve and save files</p>
 					</div>
